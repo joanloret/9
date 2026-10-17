@@ -1,6 +1,19 @@
 const content = {
   releases: [
-    { title: 'Próximo lanzamiento', status: 'En preparación', description: 'Aquí aparecerá la primera canción de LORETO V cuando esté lista para compartir.', links: [] }
+    {
+      title: 'Todo va a estar bien',
+      status: 'DEMO',
+      description: 'Escucha la versión demo de esta canción.',
+      audioPath: 'assets/audio/todo-va-a-estar-bien.mp3',
+      releaseLink: ''
+    },
+    {
+      title: 'Si vuelves a mi vida',
+      status: 'DEMO',
+      description: 'Escucha la versión demo de esta canción.',
+      audioPath: 'assets/audio/si-vuelves-a-mi-vida.mp3',
+      releaseLink: ''
+    }
   ],
   videos: [
     { title: 'Sesión en vivo', type: 'Espacio reservado', description: 'Añade aquí un enlace de YouTube o Vimeo cuando exista.' },
@@ -17,7 +30,23 @@ const content = {
 
 const $ = (selector) => document.querySelector(selector);
 const render = () => {
-  $('#releases-grid').innerHTML = content.releases.map((item) => `<article class="release-card"><div class="release-art" role="img" aria-label="Portada pendiente para ${item.title}"><span>${item.status}</span></div><div class="card-meta"><strong>${item.title}</strong><span>—</span></div><p class="empty-copy">${item.description}</p></article>`).join('');
+  $('#releases-grid').innerHTML = content.releases.map((item) => {
+    const status = item.status || 'DEMO';
+    const releaseLink = status === 'Publicado' && item.releaseLink
+      ? `<a class="release-link" href="${item.releaseLink}" target="_blank" rel="noopener noreferrer">Lanzamiento oficial <span aria-hidden="true">↗</span></a>`
+      : '';
+    return `<article class="release-card">
+      <div class="release-art" role="img" aria-label="Portada pendiente para ${item.title}"><span>${status}</span></div>
+      <div class="card-meta"><strong>${item.title}</strong><span>LORETO V</span></div>
+      <p class="empty-copy">${item.description}</p>
+      <audio class="release-player" controls controlsList="nodownload" preload="metadata" aria-label="Reproducir ${item.title} de LORETO V">
+        <source src="${item.audioPath}" type="audio/mpeg">
+        Tu navegador no puede reproducir audio HTML5.
+      </audio>
+      <p class="audio-note">Audio DEMO pendiente de incorporar.</p>
+      ${releaseLink}
+    </article>`;
+  }).join('');
   $('#videos-grid').innerHTML = content.videos.map((item) => `<article class="video-card"><span class="play-icon" aria-hidden="true">○</span><h3>${item.title}</h3><p>${item.type} · ${item.description}</p></article>`).join('');
   $('#musicians-grid').innerHTML = content.musicians.map((item) => `<article class="musician-card"><div class="musician-photo" role="img" aria-label="${item.image}, fotografía pendiente">${item.image}<br><small>reemplazar con foto propia</small></div><h3>${item.name}</h3><p>${item.role}</p><small>${item.bio}</small></article>`).join('');
   $('#gallery-grid').innerHTML = content.gallery.map((item) => `<div class="gallery-item" role="img" aria-label="Fotografía pendiente: ${item}">${item}<br><small>imagen pendiente</small></div>`).join('');

@@ -20,4 +20,15 @@ Edita el objeto `content` al inicio de `script.js` para agregar lanzamientos, vi
 
 En el repositorio: **Settings → Pages → Deploy from a branch → main → /(root)**. La URL esperada es `https://joanloret.github.io/loreto-v/`. Actualiza `sitemap.xml`, `robots.txt` y `og:url` si cambia el dominio.
 
+## Reproductores DEMO
+
+La sección Música está preparada para las demos:
+
+- `assets/audio/todo-va-a-estar-bien.mp3`
+- `assets/audio/si-vuelves-a-mi-vida.mp3`
+
+Actualmente esos archivos no están incluidos en el repositorio, por lo que los reproductores todavía no se han probado con audio real. Para activarlos, crea la carpeta `assets/audio/` y sube exactamente esos dos archivos MP3; después verifica la reproducción, pausa, búsqueda y volumen en escritorio y móvil antes de publicar. No se muestran enlaces de descarga y cada reproductor usa `controlsList="nodownload"` cuando el navegador lo admite. Esto no impide la copia completa: los archivos publicados en GitHub Pages pueden ser accesibles mediante su URL directa.
+
+Las canciones nuevas usan `status: 'DEMO'` por defecto en `script.js`. Para un lanzamiento oficial, cambia explícitamente el estado a `Publicado` y añade su URL en `releaseLink`; el reproductor DEMO puede mantenerse activo.
+
 El proyecto no incluye reproducción de audio ficticia ni un formulario que simule envíos: los enlaces de plataformas y el correo deben configurarse cuando exista contenido oficial.
