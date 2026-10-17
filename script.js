@@ -22,7 +22,7 @@ const content = {
 };
 const storyAlbums = [
   { title: 'Proyectos inconclusos', description: 'Canciones e ideas que forman parte de los caminos musicales que quedaron abiertos.', embedUrl: '' },
-  { title: 'Nuestra historia', description: 'Un álbum que reúne la memoria, las canciones y el recorrido de LoretoS.', embedUrl: '' }
+  { title: 'Nuestros inicios', description: 'El álbum que guarda los primeros pasos y recuerdos musicales de LoretoS.', embedUrl: 'https://w.soundcloud.com/player/?url=https%3A%2F%2Fon.soundcloud.com%2FIxDhDXd2MMyurrIghQ&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=true' }
 ];
 const $ = (selector) => document.querySelector(selector);
 const renderBulb = (active) => `<svg class="vintage-bulb${active ? ' is-active' : ''}" viewBox="0 0 32 42" aria-hidden="true" focusable="false"><path class="bulb-glass" d="M16 2C9.4 2 4 7.2 4 13.6c0 4.4 2.3 7.7 5.8 10.1 1.4 1 2.2 2.1 2.4 4.3h7.6c.2-2.2 1-3.3 2.4-4.3 3.5-2.4 5.8-5.7 5.8-10.1C28 7.2 22.6 2 16 2Z"/><path class="bulb-filament" d="M12 13c1.5 2.1 2.2 4.2 2.2 7.7M20 13c-1.5 2.1-2.2 4.2-2.2 7.7M12 13c1.2-1.1 2.7-1.1 4 0 1.3-1.1 2.8-1.1 4 0"/><path class="bulb-base" d="M12 28h8M12.8 31h6.4M13.7 34h4.6"/></svg>`;
