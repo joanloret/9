@@ -4,14 +4,14 @@ const content = {
       title: 'Todo va a estar bien',
       status: 'DEMO',
       description: 'Escucha la versión demo de esta canción.',
-      embedUrl: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/loreto-s/todo-va-estar-bien&color=%23914d42&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false',
+      embedUrl: 'https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2421056196&show_artwork=true&auto_play=false',
       releaseLink: ''
     },
     {
       title: 'Si vuelves a mi vida',
       status: 'DEMO',
       description: 'Escucha la versión demo de esta canción.',
-      embedUrl: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/loreto-s/si-vuelves-a-mi-vida&color=%23914d42&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false',
+      embedUrl: 'https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2421058989&show_artwork=true&auto_play=false',
       releaseLink: ''
     }
   ],
