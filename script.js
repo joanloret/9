@@ -21,7 +21,7 @@ const content = {
   news: [{ label: 'Próximamente', title: 'Aquí empieza la historia', text: 'Las novedades de LoretoS aparecerán en este espacio.' }]
 };
 const storyAlbums = [
-  { title: 'Proyectos inconclusos', description: 'Canciones e ideas que forman parte de los caminos musicales que quedaron abiertos.', embedUrl: '' },
+  { title: 'Proyectos inconclusos', description: 'Canciones e ideas que forman parte de los caminos musicales que quedaron abiertos; un capítulo que permanecerá inconcluso.', embedUrl: 'https://w.soundcloud.com/player/?url=https%3A%2F%2Fon.soundcloud.com%2FfG1JMdzmV6VrqAdbru&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=true' },
   { title: 'Nuestros inicios', description: 'El álbum que guarda los primeros pasos y recuerdos musicales de LoretoS.', embedUrl: 'https://w.soundcloud.com/player/?url=https%3A%2F%2Fon.soundcloud.com%2FIxDhDXd2MMyurrIghQ&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=true' }
 ];
 const $ = (selector) => document.querySelector(selector);
