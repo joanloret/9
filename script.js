@@ -12,7 +12,12 @@ const content = {
     { name: 'Julia Loreto', active: false }, { name: 'Jhorge Loreto', active: true }, { name: 'Elizabeth Loreto', active: false },
     { name: 'Angélica Loreto', active: false }, { name: 'Verónica Loreto', active: false }, { name: 'Guadalupe Loreto', active: false }
   ],
-  gallery: ['Ensayo', 'Grabación', 'La casa', 'Momento familiar'],
+  gallery: [
+    { title: 'Ensayo', src: 'assets/ensayo-loretos.jpg', alt: 'Los hermanos Loreto durante un ensayo musical', position: '50% center' },
+    { title: 'Grabación', src: 'assets/grabacion-loretos.jpg', alt: 'Los hermanos Loreto durante una sesión de grabación', position: '50% center' },
+    { title: 'La casa', src: 'assets/la-casa-loretos.jpg', alt: 'La casa que forma parte de la historia familiar de LoretoS', position: '50% center' },
+    { title: 'Momento familiar', src: 'assets/momento-familiar-loretos.jpg', alt: 'Los hermanos Loreto compartiendo un momento familiar', position: '50% center' }
+  ],
   news: [{ label: 'Próximamente', title: 'Aquí empieza la historia', text: 'Las novedades de LoretoS aparecerán en este espacio.' }]
 };
 const $ = (selector) => document.querySelector(selector);
@@ -21,7 +26,7 @@ const render = () => {
   $('#releases-grid').innerHTML = content.releases.map((item) => `<article class="release-card"><div class="release-art" role="img" aria-label="Portada de ${item.title}"><span>${item.status || 'DEMO'}</span></div><div class="card-meta"><strong class="script-song-title">${item.title}</strong><span>LoretoS</span></div><p class="song-description">${item.description}</p><div class="soundcloud-frame"><iframe title="SoundCloud: ${item.title} de LoretoS" loading="lazy" scrolling="no" frameborder="no" src="${item.embedUrl}"></iframe></div></article>`).join('');
   $('#videos-grid').innerHTML = content.videos.map((item) => `<article class="video-card"><span class="play-icon" aria-hidden="true">◉</span><h3>${item.title}</h3><p>${item.description}</p></article>`).join('');
   $('#musicians-grid').innerHTML = content.musicians.map((item) => `<article class="musician-card${item.active ? ' musician-card-active' : ''}">${renderBulb(item.active)}<span>${item.name}</span></article>`).join('');
-  $('#gallery-grid').innerHTML = content.gallery.map((item) => `<div class="gallery-item" role="img" aria-label="${item}"><span>${item}</span></div>`).join('');
+  $('#gallery-grid').innerHTML = content.gallery.map((item) => `<figure class="gallery-item"><img src="${item.src}" alt="${item.alt}" loading="lazy" decoding="async" style="object-position: ${item.position}"><figcaption>${item.title}</figcaption></figure>`).join('');
   $('#news-list').innerHTML = content.news.map((item) => `<article class="news-item"><small>${item.label}</small><h3>${item.title}</h3><p>${item.text}</p></article>`).join('');
 };
 render();
