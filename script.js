@@ -16,13 +16,13 @@ const content = {
     }
   ],
   videos: [
-    { title: 'Sesión en vivo', type: 'Espacio reservado', description: 'Añade aquí un enlace de YouTube o Vimeo cuando exista.' },
-    { title: 'Video oficial', type: 'Espacio reservado', description: 'Añade aquí un videoclip o una pieza audiovisual.' }
+    { title: 'Sesión en vivo', description: 'Interpretaciones de LoretoS en directo, donde la energía de la música se comparte con el público.' },
+    { title: 'Video oficial', description: 'Videos musicales y piezas audiovisuales que dan vida a las canciones de LoretoS.' }
   ],
   musicians: [
-    { name: 'José Loreto', role: 'Músico · LoretoS', bio: 'Biografía pendiente de completar.', image: 'Retrato de José' },
-    { name: 'Rodolfo Loreto', role: 'Músico · LoretoS', bio: 'Biografía pendiente de completar.', image: 'Retrato de Rodolfo' },
-    { name: 'Jhorge Loreto', role: 'Músico · LoretoS', bio: 'Biografía pendiente de completar.', image: 'Retrato de Jhorge' }
+    { name: 'José Loreto', role: 'Músico · LoretoS', bio: '', image: '' },
+    { name: 'Rodolfo Loreto', role: 'Músico · LoretoS', bio: '', image: '' },
+    { name: 'Jhorge Loreto', role: 'Músico · LoretoS', bio: '', image: '' }
   ],
   gallery: ['Ensayo', 'Grabación', 'La casa', 'Momento familiar'],
   news: [{ label: 'Próximamente', title: 'Aquí empieza la historia', text: 'Las novedades de LoretoS aparecerán en este espacio.' }]
@@ -45,8 +45,8 @@ const render = () => {
       ${releaseLink}
     </article>`;
   }).join('');
-  $('#videos-grid').innerHTML = content.videos.map((item) => `<article class="video-card"><span class="play-icon" aria-hidden="true">○</span><h3>${item.title}</h3><p>${item.type} · ${item.description}</p></article>`).join('');
-  $('#musicians-grid').innerHTML = content.musicians.map((item) => `<article class="musician-card"><div class="musician-photo" role="img" aria-label="${item.image}, fotografía pendiente">${item.image}<br><small>reemplazar con foto propia</small></div><h3>${item.name}</h3><p>${item.role}</p><small>${item.bio}</small></article>`).join('');
+  $('#videos-grid').innerHTML = content.videos.map((item) => `<article class="video-card"><span class="play-icon" aria-hidden="true">○</span><h3>${item.title}</h3><p>${item.description}</p></article>`).join('');
+  $('#musicians-grid').innerHTML = content.musicians.map((item) => `<article class="musician-card"><div class="musician-photo" aria-hidden="true"></div><h3>${item.name}</h3><p>${item.role}</p>${item.bio ? `<small>${item.bio}</small>` : ''}</article>`).join('');
   $('#gallery-grid').innerHTML = content.gallery.map((item) => `<div class="gallery-item" role="img" aria-label="Fotografía pendiente: ${item}">${item}<br><small>imagen pendiente</small></div>`).join('');
   $('#news-list').innerHTML = content.news.map((item) => `<article class="news-item"><small>${item.label}</small><h3>${item.title}</h3><p>${item.text}</p></article>`).join('');
 };
