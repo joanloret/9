@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://joanloret.github.io/loreto-v/sitemap.xml
