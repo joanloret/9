@@ -20,12 +20,12 @@ const content = {
     { title: 'Video oficial', type: 'Espacio reservado', description: 'Añade aquí un videoclip o una pieza audiovisual.' }
   ],
   musicians: [
-    { name: 'José Loreto', role: 'Músico · LORETO V', bio: 'Biografía pendiente de completar.', image: 'Retrato de José' },
-    { name: 'Rodolfo Loreto', role: 'Músico · LORETO V', bio: 'Biografía pendiente de completar.', image: 'Retrato de Rodolfo' },
-    { name: 'Jhorge Loreto', role: 'Músico · LORETO V', bio: 'Biografía pendiente de completar.', image: 'Retrato de Jhorge' }
+    { name: 'José Loreto', role: 'Músico · LoretoS', bio: 'Biografía pendiente de completar.', image: 'Retrato de José' },
+    { name: 'Rodolfo Loreto', role: 'Músico · LoretoS', bio: 'Biografía pendiente de completar.', image: 'Retrato de Rodolfo' },
+    { name: 'Jhorge Loreto', role: 'Músico · LoretoS', bio: 'Biografía pendiente de completar.', image: 'Retrato de Jhorge' }
   ],
   gallery: ['Ensayo', 'Grabación', 'La casa', 'Momento familiar'],
-  news: [{ label: 'Próximamente', title: 'Aquí empieza la historia', text: 'Las novedades de LORETO V aparecerán en este espacio.' }]
+  news: [{ label: 'Próximamente', title: 'Aquí empieza la historia', text: 'Las novedades de LoretoS aparecerán en este espacio.' }]
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -37,9 +37,9 @@ const render = () => {
       : '';
     return `<article class="release-card">
       <div class="release-art" role="img" aria-label="Portada pendiente para ${item.title}"><span>${status}</span></div>
-      <div class="card-meta"><strong>${item.title}</strong><span>LORETO V</span></div>
+      <div class="card-meta"><strong>${item.title}</strong><span>LoretoS</span></div>
       <p class="empty-copy">${item.description}</p>
-      <audio class="release-player" controls controlsList="nodownload" preload="metadata" aria-label="Reproducir ${item.title} de LORETO V">
+      <audio class="release-player" controls controlsList="nodownload" preload="metadata" aria-label="Reproducir ${item.title} de LoretoS">
         <source src="${item.audioPath}" type="audio/mpeg">
         Tu navegador no puede reproducir audio HTML5.
       </audio>

@@ -1,6 +1,8 @@
-# LORETO V
+# LoretoS
 
-Sitio web oficial de LORETO V, proyecto familiar de indie pop latino. Sitio estático, rápido y compatible con GitHub Pages.
+Sitio web oficial de LoretoS, proyecto familiar de indie pop latino. Sitio estático, rápido y compatible con GitHub Pages.
+
+El encabezado y el pie de página esperan el logotipo oficial en `assets/loretos-logo.png`. El archivo debe añadirse al repositorio para que pueda cargarse en GitHub Pages; mientras no exista, la referencia de imagen quedará sin recurso visible. El favicon sigue siendo el SVG provisional porque no se han verificado las dimensiones del PNG.
 
 ## Ejecutar localmente
 
