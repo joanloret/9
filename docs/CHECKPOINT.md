@@ -20,26 +20,14 @@ Implementado:
 - Encabezado y pie usan el logo real `assets/Logo LoretoS.jpg`.
 - Favicon SVG provisional conservado porque las dimensiones del PNG no están verificadas.
 - Logo dimensionado con altura fija, anchura automática y `object-fit: contain`.
-- Reproductores DEMO conservados.
+- Las dos canciones DEMO usan iframes oficiales de SoundCloud.
 
-En `script.js`:
-
-- `Todo va a estar bien` en estado `DEMO`.
-- `Si vuelves a mi vida` en estado `DEMO`.
-- Reproductores HTML5 sin autoplay y con `controlsList="nodownload"`.
-- El enlace oficial solo aparece cuando el estado es `Publicado` y se configura `releaseLink`.
-
-Archivos de audio pendientes:
-
-- `assets/audio/todo-va-a-estar-bien.mp3`
-- `assets/audio/si-vuelves-a-mi-vida.mp3`
-
-No se han añadido archivos de audio ni se ha declarado reproducción real probada.
+En `script.js`, `Todo va a estar bien` y `Si vuelves a mi vida` permanecen en estado `DEMO` y apuntan a sus URLs oficiales de SoundCloud. No se han añadido archivos MP3.
 
 ## Validación
 
-Pasaron las comprobaciones estructurales de títulos, estado DEMO, controles, ausencia de autoplay, rutas documentadas y estilos responsive. No fue posible probar reproducción, pausa, búsqueda o volumen porque los MP3 todavía no existen.
+Pasaron las comprobaciones estructurales de títulos, estado DEMO, iframes, accesibilidad, ausencia de autoplay y estilos responsive. La reproducción efectiva depende de la disponibilidad de los enlaces públicos de SoundCloud.
 
 ## INSTRUCCIÓN PARA CONTINUAR
 
-Crear `assets/audio/`, colocar allí exactamente los dos archivos MP3 indicados, abrir el sitio en escritorio y móvil, probar ambos reproductores y publicar el cambio verificando que los archivos existan en GitHub Pages.
+Abrir el sitio en escritorio y móvil, probar ambos reproductores de SoundCloud y comprobar que los enlaces públicos sigan disponibles.

@@ -4,14 +4,14 @@ const content = {
       title: 'Todo va a estar bien',
       status: 'DEMO',
       description: 'Escucha la versión demo de esta canción.',
-      audioPath: 'assets/audio/todo-va-a-estar-bien.mp3',
+      embedUrl: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/loreto-s/todo-va-estar-bien&color=%23914d42&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false',
       releaseLink: ''
     },
     {
       title: 'Si vuelves a mi vida',
       status: 'DEMO',
       description: 'Escucha la versión demo de esta canción.',
-      audioPath: 'assets/audio/si-vuelves-a-mi-vida.mp3',
+      embedUrl: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/loreto-s/si-vuelves-a-mi-vida&color=%23914d42&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false',
       releaseLink: ''
     }
   ],
@@ -39,11 +39,9 @@ const render = () => {
       <div class="release-art" role="img" aria-label="Portada pendiente para ${item.title}"><span>${status}</span></div>
       <div class="card-meta"><strong class="script-song-title">${item.title}</strong><span>LoretoS</span></div>
       <p class="empty-copy">${item.description}</p>
-      <audio class="release-player" controls controlsList="nodownload" preload="metadata" aria-label="Reproducir ${item.title} de LoretoS">
-        <source src="${item.audioPath}" type="audio/mpeg">
-        Tu navegador no puede reproducir audio HTML5.
-      </audio>
-      <p class="audio-note">Audio DEMO pendiente de incorporar.</p>
+      <div class="soundcloud-frame">
+        <iframe title="SoundCloud: ${item.title} de LoretoS" loading="lazy" scrolling="no" frameborder="no" src="${item.embedUrl}"></iframe>
+      </div>
       ${releaseLink}
     </article>`;
   }).join('');
