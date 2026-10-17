@@ -20,15 +20,26 @@ const content = {
     { title: 'Video oficial', description: 'Videos musicales y piezas audiovisuales que dan vida a las canciones de LoretoS.' }
   ],
   musicians: [
-    { name: 'José Loreto', role: 'Músico · LoretoS', bio: '', image: '' },
-    { name: 'Rodolfo Loreto', role: 'Músico · LoretoS', bio: '', image: '' },
-    { name: 'Jhorge Loreto', role: 'Músico · LoretoS', bio: '', image: '' }
+    { name: 'Rodolfo Loreto', role: 'Músico · LoretoS', active: false },
+    { name: 'Elena Loreto', role: 'Músico · LoretoS', active: false },
+    { name: 'José Loreto', role: 'Músico · LoretoS', active: false },
+    { name: 'Julia Loreto', role: 'Músico · LoretoS', active: false },
+    { name: 'Jorge Loreto', role: 'Músico · LoretoS', active: true },
+    { name: 'Elizabeth Loreto', role: 'Músico · LoretoS', active: false },
+    { name: 'Angélica Loreto', role: 'Músico · LoretoS', active: false },
+    { name: 'Verónica Loreto', role: 'Músico · LoretoS', active: false },
+    { name: 'Guadalupe Loreto', role: 'Músico · LoretoS', active: false }
   ],
   gallery: ['Ensayo', 'Grabación', 'La casa', 'Momento familiar'],
   news: [{ label: 'Próximamente', title: 'Aquí empieza la historia', text: 'Las novedades de LoretoS aparecerán en este espacio.' }]
 };
 
 const $ = (selector) => document.querySelector(selector);
+const renderBulb = (active) => `<svg class="vintage-bulb${active ? ' is-active' : ''}" viewBox="0 0 32 42" role="img" aria-label="${active ? 'Foco encendido' : 'Foco apagado'}">
+  <path class="bulb-glass" d="M16 2C9.4 2 4 7.2 4 13.6c0 4.4 2.3 7.7 5.8 10.1 1.4 1 2.2 2.1 2.4 4.3h7.6c.2-2.2 1-3.3 2.4-4.3 3.5-2.4 5.8-5.7 5.8-10.1C28 7.2 22.6 2 16 2Z"/>
+  <path class="bulb-filament" d="M12 13c1.5 2.1 2.2 4.2 2.2 7.7M20 13c-1.5 2.1-2.2 4.2-2.2 7.7M12 13c1.2-1.1 2.7-1.1 4 0 1.3-1.1 2.8-1.1 4 0"/>
+  <path class="bulb-base" d="M12 28h8M12.8 31h6.4M13.7 34h4.6"/>
+</svg>`;
 const render = () => {
   $('#releases-grid').innerHTML = content.releases.map((item) => {
     const status = item.status || 'DEMO';
@@ -46,7 +57,7 @@ const render = () => {
     </article>`;
   }).join('');
   $('#videos-grid').innerHTML = content.videos.map((item) => `<article class="video-card"><span class="play-icon" aria-hidden="true">○</span><h3>${item.title}</h3><p>${item.description}</p></article>`).join('');
-  $('#musicians-grid').innerHTML = content.musicians.map((item) => `<article class="musician-card"><div class="musician-photo" aria-hidden="true"></div><h3>${item.name}</h3><p>${item.role}</p>${item.bio ? `<small>${item.bio}</small>` : ''}</article>`).join('');
+  $('#musicians-grid').innerHTML = content.musicians.map((item) => `<article class="musician-card${item.active ? ' musician-card-active' : ''}"><div class="musician-photo" aria-hidden="true"></div><h3>${renderBulb(item.active)}<span>${item.name}</span></h3><p>${item.role}</p></article>`).join('');
   $('#gallery-grid').innerHTML = content.gallery.map((item) => `<div class="gallery-item" role="img" aria-label="Fotografía pendiente: ${item}">${item}<br><small>imagen pendiente</small></div>`).join('');
   $('#news-list').innerHTML = content.news.map((item) => `<article class="news-item"><small>${item.label}</small><h3>${item.title}</h3><p>${item.text}</p></article>`).join('');
 };
