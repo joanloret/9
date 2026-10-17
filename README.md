@@ -2,7 +2,7 @@
 
 Sitio web oficial de LoretoS, proyecto familiar de indie pop latino. Sitio estático, rápido y compatible con GitHub Pages.
 
-El encabezado y el pie de página esperan el logotipo oficial en `assets/loretos-logo.png`. El archivo debe añadirse al repositorio para que pueda cargarse en GitHub Pages; mientras no exista, la referencia de imagen quedará sin recurso visible. El favicon sigue siendo el SVG provisional porque no se han verificado las dimensiones del PNG.
+El encabezado y el pie de página usan el logotipo oficial `assets/Logo LoretoS.jpg`. La imagen es un JPEG de 1408x768 y se muestra con proporciones conservadas. El favicon sigue siendo el SVG provisional.
 
 ## Ejecutar localmente
 
@@ -20,7 +20,11 @@ Edita el objeto `content` al inicio de `script.js` para agregar lanzamientos, vi
 
 ## Publicar en GitHub Pages
 
-En el repositorio: **Settings → Pages → Deploy from a branch → main → /(root)**. La URL esperada es `https://joanloret.github.io/loreto-v/`. Actualiza `sitemap.xml`, `robots.txt` y `og:url` si cambia el dominio.
+En el repositorio: **Settings → Pages → Deploy from a branch → main → /(root)**. La URL esperada es `https://joanloret.github.io/LoretoS/`.
+
+## SoundCloud
+
+La sección **Escucha nuestra música** integra el reproductor oficial de SoundCloud para `Todo va a estar bien` mediante iframe, sin reproducción automática y sin descargar ni alojar el MP3 en este repositorio. La reproducción depende de la disponibilidad pública del enlace de SoundCloud y de la conexión del visitante.
 
 ## Reproductores DEMO
 

@@ -37,7 +37,7 @@ const render = () => {
       : '';
     return `<article class="release-card">
       <div class="release-art" role="img" aria-label="Portada pendiente para ${item.title}"><span>${status}</span></div>
-      <div class="card-meta"><strong>${item.title}</strong><span>LoretoS</span></div>
+      <div class="card-meta"><strong class="script-song-title">${item.title}</strong><span>LoretoS</span></div>
       <p class="empty-copy">${item.description}</p>
       <audio class="release-player" controls controlsList="nodownload" preload="metadata" aria-label="Reproducir ${item.title} de LoretoS">
         <source src="${item.audioPath}" type="audio/mpeg">

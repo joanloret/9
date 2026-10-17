@@ -7,6 +7,7 @@ Fecha: 2026-10-17
 LoretoS — actualización de marca y reproductores de canciones DEMO.
 
 Repositorio: https://github.com/joanloret/loreto-v  
+URL pública prevista: https://joanloret.github.io/LoretoS/
 Rama: `main`  
 Último commit verificado antes de esta actualización: `2597e82` (`Document demo audio continuity checkpoint`)  
 Estado: sincronizado con `origin/main`.
@@ -16,7 +17,7 @@ Estado: sincronizado con `origin/main`.
 Implementado:
 
 - Marca visible actualizada a `LoretoS`.
-- Encabezado y pie preparados para `assets/loretos-logo.png`, que todavía no existe en `main`.
+- Encabezado y pie usan el logo real `assets/Logo LoretoS.jpg`.
 - Favicon SVG provisional conservado porque las dimensiones del PNG no están verificadas.
 - Logo dimensionado con altura fija, anchura automática y `object-fit: contain`.
 - Reproductores DEMO conservados.
