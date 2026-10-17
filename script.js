@@ -9,7 +9,7 @@ const content = {
   ],
   musicians: [
     { name: 'Rodolfo Loreto', active: false }, { name: 'Elena Loreto', active: false }, { name: 'José Loreto', active: false },
-    { name: 'Julia Loreto', active: false }, { name: 'Jhorge Loreto', active: true }, { name: 'Elizabeth Loreto', active: false },
+    { name: 'Julia Loreto', active: false }, { name: 'Voz principal', active: true }, { name: 'Elizabeth Loreto', active: false },
     { name: 'Angélica Loreto', active: false }, { name: 'Verónica Loreto', active: false }, { name: 'Guadalupe Loreto', active: false }
   ],
   gallery: [
