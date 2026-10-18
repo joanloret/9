@@ -28,6 +28,8 @@ const reactionOptions = [
   { id: 'dislike', emoji: '😤', label: 'No me gustó' }
 ];
 const voteStorageKey = 'loretos-demo-reactions-v1';
+const voterStorageKey = 'loretos-reaction-voter-id-v1';
+const reactionStates = {};
 const readVoteData = () => {
   try {
     const data = JSON.parse(localStorage.getItem(voteStorageKey) || '{}');
@@ -37,18 +39,34 @@ const readVoteData = () => {
   }
 };
 const saveVoteData = (data) => {
+  try { localStorage.setItem(voteStorageKey, JSON.stringify(data)); } catch {}
+};
+const getVoterId = () => {
   try {
-    localStorage.setItem(voteStorageKey, JSON.stringify(data));
+    let id = localStorage.getItem(voterStorageKey);
+    if (!id) {
+      id = typeof crypto !== 'undefined' && crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'v-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem(voterStorageKey, id);
+    }
+    return id;
   } catch {
-    // La encuesta sigue funcionando durante la visita aunque el navegador bloquee el almacenamiento.
+    return 'session-' + Math.random().toString(36).slice(2);
   }
 };
-const getSongId = (title) => title.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const getSongId = (title) => title.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const emptyVoteState = () => ({ counts: {}, selected: null, source: 'local' });
+const getReactionState = (songId) => {
+  if (reactionStates[songId]) return reactionStates[songId];
+  const saved = readVoteData()[songId] || { counts: {}, selected: null };
+  reactionStates[songId] = { ...saved, source: 'local' };
+  return reactionStates[songId];
+};
 const renderReactions = (item) => {
   if ((item.status || '').toUpperCase() !== 'DEMO') return '';
   const songId = getSongId(item.title);
-  const data = readVoteData();
-  const songVotes = data[songId] || { counts: {}, selected: null };
+  const songVotes = getReactionState(songId);
   const total = reactionOptions.reduce((sum, option) => sum + (Number(songVotes.counts?.[option.id]) || 0), 0);
   const buttons = reactionOptions.map((option) => {
     const count = Number(songVotes.counts?.[option.id]) || 0;
@@ -56,13 +74,34 @@ const renderReactions = (item) => {
     const selected = songVotes.selected === option.id;
     return `<button class="reaction-option${selected ? ' is-selected' : ''}" type="button" data-reaction-song="${songId}" data-reaction-id="${option.id}" aria-pressed="${selected}" aria-label="${option.label}: ${count} reacciones"><span class="reaction-emoji" aria-hidden="true">${option.emoji}</span><span class="reaction-label">${option.label}</span><span class="reaction-result"><span class="reaction-count">${count}</span><span class="reaction-percent">${percent}%</span></span></button>`;
   }).join('');
-  return `<section class="demo-reactions" data-reactions-for="${songId}" aria-label="Encuesta de reacciones para ${item.title}"><div class="reaction-heading"><h3>¿Qué te pareció este demo?</h3><p>Tu opinión nos ayuda a seguir mejorando.</p></div><div class="reaction-options">${buttons}</div><p class="reaction-total" aria-live="polite"> ${total} ${total === 1 ? 'reacción' : 'reacciones'} en este navegador</p></section>`;
+  const note = songVotes.source === 'global'
+    ? 'Resultados compartidos de todos los visitantes.'
+    : 'Modo local: el contador compartido aún no está conectado.';
+  return `<section class="demo-reactions" data-reactions-for="${songId}" aria-label="Encuesta de reacciones para ${item.title}"><div class="reaction-heading"><h3>¿Qué te pareció este demo?</h3><p>Tu opinión nos ayuda a seguir mejorando.</p></div><div class="reaction-options">${buttons}</div><p class="reaction-total" aria-live="polite">${total} ${total === 1 ? 'reacción' : 'reacciones'} · ${note}</p></section>`;
 };
 const updateReactionPanel = (songId) => {
   const item = content.releases.find((release) => getSongId(release.title) === songId);
   const panel = document.querySelector(`[data-reactions-for="${songId}"]`);
   if (!item || !panel) return;
   panel.outerHTML = renderReactions(item);
+};
+const loadGlobalReactions = async (item) => {
+  if ((item.status || '').toUpperCase() !== 'DEMO') return;
+  const songId = getSongId(item.title);
+  try {
+    const url = new URL('/api/reactions', window.location.origin);
+    url.searchParams.set('songId', songId);
+    url.searchParams.set('voterId', getVoterId());
+    const response = await fetch(url, { headers: { Accept: 'application/json' } });
+    if (!response.ok) throw new Error('La API de reacciones no está disponible');
+    const result = await response.json();
+    if (!result || !result.counts) throw new Error('Respuesta de encuesta inválida');
+    reactionStates[songId] = { counts: result.counts, selected: result.selected || null, source: 'global' };
+  } catch {
+    const local = readVoteData()[songId] || { counts: {}, selected: null };
+    reactionStates[songId] = { ...local, source: 'local' };
+  }
+  updateReactionPanel(songId);
 };
 const renderBulb = (active) => `<svg class="vintage-bulb${active ? ' is-active' : ''}" viewBox="0 0 32 42" aria-hidden="true" focusable="false"><path class="bulb-glass" d="M16 2C9.4 2 4 7.2 4 13.6c0 4.4 2.3 7.7 5.8 10.1 1.4 1 2.2 2.1 2.4 4.3h7.6c.2-2.2 1-3.3 2.4-4.3 3.5-2.4 5.8-5.7 5.8-10.1C28 7.2 22.6 2 16 2Z"/><path class="bulb-filament" d="M12 13c1.5 2.1 2.2 4.2 2.2 7.7M20 13c-1.5 2.1-2.2 4.2-2.2 7.7M12 13c1.2-1.1 2.7-1.1 4 0 1.3-1.1 2.8-1.1 4 0"/><path class="bulb-base" d="M12 28h8M12.8 31h6.4M13.7 34h4.6"/></svg>`;
 const render = () => {
@@ -79,20 +118,37 @@ toggle.addEventListener('click', () => { const open = nav.classList.toggle('open
 nav.addEventListener('click', (event) => { if (event.target.matches('a')) { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); } });
 document.querySelectorAll('a[href="#"]').forEach((link) => link.addEventListener('click', (event) => event.preventDefault()));
 
-document.addEventListener('click', (event) => {
+document.addEventListener('click', async (event) => {
   const button = event.target.closest('[data-reaction-song][data-reaction-id]');
-  if (!button) return;
+  if (!button || button.disabled) return;
   const { reactionSong: songId, reactionId } = button.dataset;
   if (!reactionOptions.some((option) => option.id === reactionId)) return;
-  const data = readVoteData();
-  const songVotes = data[songId] || { counts: {}, selected: null };
-  if (songVotes.selected === reactionId) return;
-  if (songVotes.selected) {
-    songVotes.counts[songVotes.selected] = Math.max(0, (Number(songVotes.counts[songVotes.selected]) || 0) - 1);
+  const item = content.releases.find((release) => getSongId(release.title) === songId);
+  if (!item || (item.status || '').toUpperCase() !== 'DEMO') return;
+  const panel = document.querySelector(`[data-reactions-for="${songId}"]`);
+  if (panel) panel.querySelectorAll('button').forEach((control) => { control.disabled = true; });
+  try {
+    const response = await fetch('/api/reactions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ songId, reactionId, voterId: getVoterId() })
+    });
+    if (!response.ok) throw new Error('El servidor de reacciones no está configurado');
+    const result = await response.json();
+    if (!result || !result.counts) throw new Error('Respuesta de encuesta inválida');
+    reactionStates[songId] = { counts: result.counts, selected: result.selected || reactionId, source: 'global' };
+  } catch {
+    const data = readVoteData();
+    const songVotes = data[songId] || { counts: {}, selected: null };
+    if (songVotes.selected !== reactionId) {
+      if (songVotes.selected) songVotes.counts[songVotes.selected] = Math.max(0, (Number(songVotes.counts[songVotes.selected]) || 0) - 1);
+      songVotes.counts[reactionId] = (Number(songVotes.counts[reactionId]) || 0) + 1;
+      songVotes.selected = reactionId;
+    }
+    data[songId] = songVotes;
+    saveVoteData(data);
+    reactionStates[songId] = { ...songVotes, source: 'local' };
   }
-  songVotes.counts[reactionId] = (Number(songVotes.counts[reactionId]) || 0) + 1;
-  songVotes.selected = reactionId;
-  data[songId] = songVotes;
-  saveVoteData(data);
   updateReactionPanel(songId);
 });
+content.releases.forEach(loadGlobalReactions);
