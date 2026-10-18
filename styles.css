@@ -16,3 +16,20 @@
 .gallery-item:hover img{transform:scale(1.04);filter:sepia(.12) saturate(.95) contrast(1)}
 @media(max-width:760px){.gallery-item img{aspect-ratio:1}.gallery-item figcaption{font-size:1.15rem}}
 @media(prefers-reduced-motion:reduce){.gallery-item img{transition:none}}
+
+
+/* Encuesta de reacciones para demos */
+.demo-reactions{margin-top:1.4rem;padding:1.25rem;background:rgba(234,214,174,.58);border:1px solid var(--line);border-top:3px solid var(--burnt)}
+.reaction-heading h3{margin:0;font:500 1.35rem/1.2 var(--serif);color:var(--ink)}
+.reaction-heading p{margin:.45rem 0 1rem;font-size:.82rem;color:rgba(48,37,27,.72)}
+.reaction-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem}
+.reaction-option{display:flex;flex-direction:column;align-items:center;gap:.35rem;min-width:0;padding:.8rem .45rem;background:var(--cream);border:1px solid rgba(48,37,27,.2);color:var(--ink);font:500 .76rem var(--sans);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.reaction-option:hover{border-color:var(--burnt);transform:translateY(-2px)}
+.reaction-option:focus-visible{outline:3px solid var(--burnt);outline-offset:3px}
+.reaction-option.is-selected{background:#fff0c2;border:2px solid var(--burnt);box-shadow:inset 0 0 0 1px rgba(166,79,45,.12)}
+.reaction-emoji{font-size:1.55rem;line-height:1.2}
+.reaction-label{text-align:center;line-height:1.25;overflow-wrap:anywhere}
+.reaction-result{display:flex;gap:.45rem;align-items:center;font:500 .68rem var(--mono);color:var(--burnt)}
+.reaction-percent{color:rgba(48,37,27,.65)}
+.reaction-total{margin:.85rem 0 0;text-align:right;font:400 .62rem var(--mono);color:rgba(48,37,27,.65)}
+@media(max-width:420px){.demo-reactions{padding:.85rem}.reaction-options{gap:.35rem}.reaction-option{padding:.7rem .25rem}.reaction-label{font-size:.68rem}.reaction-result{gap:.25rem;font-size:.6rem}}
