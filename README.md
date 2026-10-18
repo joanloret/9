@@ -37,3 +37,8 @@ El proyecto no incluye reproducción de audio ficticia ni un formulario que simu
 Cada lanzamiento marcado como `DEMO` muestra las reacciones ❤️ **Me encanta**, 🤔 **Le falta algo** y 😤 **No me gustó**. El frontend ya consulta `/api/reactions` para leer y guardar resultados compartidos.
 
 Para habilitar los votos globales, configura Cloudflare D1 y el binding `REACTIONS_DB` siguiendo [la guía de configuración](docs/reaction-polls-cloudflare.md) y despliega la API `functions/api/reactions.js`. Hasta que la base D1 esté enlazada y la API se ejecute en Cloudflare Pages, la página mostrará un aviso de modo local y los votos no se compartirán entre visitantes.
+
+
+## Página del proyecto
+
+Consulta la ficha pública del proyecto en el [portafolio de Jorge Loreto](https://jorgeloreto-portfolio.onrender.com/proyectos/proyecto-musical.html).
