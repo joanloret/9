@@ -2,7 +2,7 @@
 
 Sitio web oficial de 9 Loretos, proyecto familiar de indie pop latino. Sitio estático, rápido y compatible con GitHub Pages.
 
-El encabezado y el pie de página usan el logotipo oficial `assets/Logo LoretoS.jpg`. La imagen es un JPEG de 1408x768 y se muestra con proporciones conservadas. El favicon sigue siendo el SVG provisional.
+El encabezado y el pie de página usan el logotipo tipográfico vintage `assets/logo-9-loretos.svg`. El nombre visible actual del proyecto es **9 Loretos**. Si se cambia de nombre en el futuro, actualizar también el logotipo SVG para que coincida.
 
 ## Ejecutar localmente
 
@@ -16,7 +16,7 @@ Abre `http://localhost:8000`.
 
 ## Actualizar contenido
 
-Edita el objeto `content` al inicio de `script.js` para agregar lanzamientos, videos, músicos, galería y novedades. Reemplaza los espacios de fotografía en `index.html` o `styles.css` con imágenes propias autorizadas. Antes de publicar, sustituye el correo y los enlaces sociales provisionales en `index.html`.
+Edita `const siteName = '9 Loretos'` al inicio de `script.js` para actualizar el nombre usado en las tarjetas y reproductores. Para un cambio futuro de marca, actualiza también el título, encabezados y metadatos en `index.html`, además del archivo `assets/logo-9-loretos.svg`. Edita el objeto `content` al inicio de `script.js` para agregar lanzamientos, videos, músicos, galería y novedades. Reemplaza los espacios de fotografía en `index.html` o `styles.css` con imágenes propias autorizadas. Antes de publicar, sustituye el correo y los enlaces sociales provisionales en `index.html`.
 
 ## Publicar en GitHub Pages
 
