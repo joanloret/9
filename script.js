@@ -43,7 +43,7 @@ const saveVoteData = (data) => {
     // La encuesta sigue funcionando durante la visita aunque el navegador bloquee el almacenamiento.
   }
 };
-const getSongId = (title) => title.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const getSongId = (title) => title.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const renderReactions = (item) => {
   if ((item.status || '').toUpperCase() !== 'DEMO') return '';
   const songId = getSongId(item.title);
