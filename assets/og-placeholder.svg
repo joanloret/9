@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#211d19"/><circle cx="950" cy="150" r="250" fill="#914d42" opacity=".65"/><text x="80" y="280" font-family="Georgia,serif" font-size="115" fill="#e9dfcd">LORETO <tspan fill="#b58a58" font-style="italic">V</tspan></text><text x="88" y="370" font-family="monospace" font-size="25" letter-spacing="5" fill="#b58a58">MÚSICA QUE VIENE DE CASA</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">9 Loretos</title>
+  <desc id="desc">Indie pop latino hecho en familia. Nueve hermanos, una misma raíz.</desc>
+  <rect width="1200" height="630" fill="#211d19"/>
+  <circle cx="1010" cy="135" r="270" fill="#914d42" opacity=".48"/>
+  <circle cx="1060" cy="545" r="205" fill="#b58a58" opacity=".22"/>
+  <path d="M70 78 H1130" stroke="#b58a58" stroke-width="2" opacity=".8"/>
+  <text x="80" y="300" fill="#f2e6cb" font-family="Brush Script MT, Segoe Script, cursive" font-size="150" font-style="italic" letter-spacing="-3">9 Loretos</text>
+  <path d="M98 342 C360 370, 690 365, 1035 330" fill="none" stroke="#e4bd48" stroke-width="4" stroke-linecap="round"/>
+  <text x="88" y="430" fill="#e9dfcd" font-family="Arial, sans-serif" font-size="28" letter-spacing="6">MÚSICA QUE VIENE DE CASA</text>
+  <text x="88" y="495" fill="#c8b9a0" font-family="Arial, sans-serif" font-size="22">INDIE POP LATINO · NUEVE HERMANOS, UNA MISMA RAÍZ</text>
+</svg>
