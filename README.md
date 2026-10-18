@@ -1,8 +1,8 @@
-# LoretoS
+# 9 Loretos
 
-Sitio web oficial de LoretoS, proyecto familiar de indie pop latino. Sitio estático, rápido y compatible con GitHub Pages.
+Sitio web oficial de 9 Loretos, proyecto familiar de indie pop latino. Sitio estático, rápido y compatible con GitHub Pages.
 
-El encabezado y el pie de página usan el logotipo oficial `assets/Logo LoretoS.jpg`. La imagen es un JPEG de 1408x768 y se muestra con proporciones conservadas. El favicon sigue siendo el SVG provisional.
+El encabezado y el pie de página usan el logotipo oficial `assets/Logo 9 Loretos.jpg`. La imagen es un JPEG de 1408x768 y se muestra con proporciones conservadas. El favicon sigue siendo el SVG provisional.
 
 ## Ejecutar localmente
 
@@ -20,7 +20,7 @@ Edita el objeto `content` al inicio de `script.js` para agregar lanzamientos, vi
 
 ## Publicar en GitHub Pages
 
-En el repositorio: **Settings → Pages → Deploy from a branch → main → /(root)**. La URL esperada es `https://joanloret.github.io/LoretoS/`.
+En el repositorio: **Settings → Pages → Deploy from a branch → main → /(root)**. La URL esperada es `https://joanloret.github.io/9 Loretos/`.
 
 ## SoundCloud
 
