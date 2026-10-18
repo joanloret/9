@@ -31,3 +31,9 @@ La sección **Escucha nuestra música** integra el reproductor oficial de SoundC
 Las canciones `Todo va a estar bien` y `Si vuelves a mi vida` usan los reproductores oficiales de SoundCloud dentro de sus tarjetas, con reproducción iniciada por el visitante. No se alojan archivos MP3 en este repositorio.
 
 El proyecto no incluye reproducción de audio ficticia ni un formulario que simule envíos: los enlaces de plataformas y el correo deben configurarse cuando exista contenido oficial.
+
+## Encuestas de reacciones de los demos
+
+Cada lanzamiento marcado como `DEMO` muestra las reacciones ❤️ **Me encanta**, 🤔 **Le falta algo** y 😤 **No me gustó**. El frontend ya consulta `/api/reactions` para leer y guardar resultados compartidos.
+
+Para habilitar los votos globales, configura Cloudflare D1 y el binding `REACTIONS_DB` siguiendo [la guía de configuración](docs/reaction-polls-cloudflare.md) y despliega la API `functions/api/reactions.js`. Hasta que la base D1 esté enlazada y la API se ejecute en Cloudflare Pages, la página mostrará un aviso de modo local y los votos no se compartirán entre visitantes.
