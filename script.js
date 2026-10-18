@@ -9,9 +9,9 @@ const content = {
     { title: 'Video oficial', description: 'Videos musicales y piezas audiovisuales que dan vida a las canciones de 9 Loretos.' }
   ],
   musicians: [
-    { name: 'Rodolfo Loreto', active: false }, { name: 'Elena Loreto', active: false }, { name: 'José Loreto', active: false },
-    { name: 'Julia Loreto', active: false }, { name: 'Jorge Loreto', active: true }, { name: 'Elizabeth Loreto', active: false },
-    { name: 'Angélica Loreto', active: false }, { name: 'Verónica Loreto', active: false }, { name: 'Guadalupe Loreto', active: false }
+    { name: 'Rodailo', active: false }, { name: 'Negra', active: false }, { name: 'Muelon', active: false },
+    { name: 'Julieta', active: false }, { name: 'Negro', active: true }, { name: 'Mi buen', active: false },
+    { name: 'Gelopillo', active: false }, { name: 'Frentona', active: false }, { name: 'Hueso', active: false }
   ],
   gallery: [
     { title: 'Ensayo', src: 'assets/ensayo-loretos.jpg', alt: 'Los hermanos Loreto durante un ensayo musical', position: '50% center' },
