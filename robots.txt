@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://joanloret.github.io/LoretoS/sitemap.xml
+Sitemap: https://joanloret.github.io/9/sitemap.xml
