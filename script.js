@@ -19,7 +19,16 @@ const content = {
     { title: 'La casa', src: 'assets/la-casa-loretos.jpg', alt: 'La casa que forma parte de la historia familiar de 9 Loretos', position: '50% center' },
     { title: 'Momento familiar', src: 'assets/momento-familiar-loretos.jpg', alt: 'Los hermanos Loreto compartiendo un momento familiar', position: '50% center' }
   ],
-  news: [{ label: 'Próximamente', title: 'Aquí empieza la historia', text: 'Las novedades de 9 Loretos aparecerán en este espacio.' }]
+  upcomingSongs: [
+    { title: 'Todo Va Estar Bien', active: true },
+    { title: 'Si Vuelves a Mi Vida', active: true },
+    { title: 'Los Loretos', active: false },
+    { title: 'Ay Pezozza', active: false },
+    { title: 'Idilio Ideal', active: false },
+    { title: 'Caderona', active: false },
+    { title: 'Cuando Nadie Mira', active: false },
+    { title: 'Bebocho', active: false }
+  ]
 };
 const $ = (selector) => document.querySelector(selector);
 const reactionOptions = [
@@ -109,7 +118,7 @@ const render = () => {
   $('#videos-grid').innerHTML = content.videos.map((item) => `<article class="video-card"><span class="play-icon" aria-hidden="true">◉</span><h3>${item.title}</h3><p>${item.description}</p></article>`).join('');
   $('#musicians-grid').innerHTML = content.musicians.map((item) => `<article class="musician-card${item.active ? ' musician-card-active' : ''}">${renderBulb(item.active)}<span>${item.name}</span></article>`).join('');
   $('#gallery-grid').innerHTML = content.gallery.map((item) => `<figure class="gallery-item"><img src="${item.src}" alt="${item.alt}" loading="lazy" decoding="async" style="object-position: ${item.position}"><figcaption>${item.title}</figcaption></figure>`).join('');
-  $('#news-list').innerHTML = content.news.map((item) => `<article class="news-item"><small>${item.label}</small><h3>${item.title}</h3><p>${item.text}</p></article>`).join('');
+  $('#news-list').innerHTML = content.upcomingSongs.map((item, index) => `<article class="upcoming-song"><span class="upcoming-song-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><h3>${item.title}</h3><span class="release-switch${item.active ? ' is-on' : ''}" role="img" aria-label="${item.active ? 'Activo: lanzamiento en preparación' : 'Inactivo: lanzamiento pendiente'}"><span></span></span></article>`).join('');
 };
 render();
 $('#year').textContent = new Date().getFullYear();
